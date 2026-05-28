@@ -1,0 +1,61 @@
+# HotPulse 配置文件
+
+# 服务配置
+server:
+  host: "0.0.0.0"
+  port: 8000
+
+# 数据库配置
+database:
+  path: "hotpulse.db"
+
+# 抓取配置
+fetcher:
+  interval: 300  # 抓取间隔（秒）
+  max_items_per_source: 50
+  timeout: 30
+
+# 数据源配置
+sources:
+  zhihu:
+    enabled: true
+    name: "知乎热榜"
+    priority: 1
+  
+  weibo:
+    enabled: true
+    name: "微博热搜"
+    priority: 1
+  
+  bilibili:
+    enabled: true
+    name: "B站热榜"
+    priority: 2
+  
+  github:
+    enabled: true
+    name: "GitHub Trending"
+    priority: 2
+
+# AI分析配置
+analysis:
+  enabled: true
+  sentiment_analysis: true
+  keyword_extraction: true
+  batch_size: 100
+
+# 通知配置
+notification:
+  enabled: false
+  webhooks: []
+  # webhook示例:
+  # - name: "钉钉"
+  #   url: "https://oapi.dingtalk.com/robot/send?access_token=xxx"
+  #   headers:
+  #     Content-Type: "application/json"
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "hotpulse.log"
